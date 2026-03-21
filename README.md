@@ -122,23 +122,6 @@ The second level further provides detailed information on the symmetry-enforced 
 
 By comparing the results of `GetTopfilling["65.1.2.5.L", 4, 0, 1]` and `GetTopfilling["65.1.2.5.L", 4, 0, 0]`, we find that in the altermagnetic material 0.402_Sr<sub>4</sub>Fe<sub>4</sub>O<sub>11</sub>, SOC is relatively strong, and the topology cannot be inferred from the spin space group alone.
 
-Finally, we provide data for 484 experimentally synthesized collinear magnets from the MAGNDATA database that are converged both with and without SOC for at least one value of the Hubbard $U$ (see `484materials-HSPs-symmetry-data.mx`). This dataset is intended to facilitate inspection of the high-symmetry-points symmetry data diagnosed by spin space groups and magnetic space groups (realistic SOC) at each converged Hubbard $U$ and relative electron filling *δν* (with *δν* ranging from -8 to 8).
-
-Using the modules **ColliSSGCalTopoElectron** and **MSGCalTopoElectron**, together with the provided high-symmetry-points symmetry data, users can compute the band topology of a given material at a specified Hubbard *U* and relative electron filling *δν* under spin space groups and magnetic space groups (realistic SOC), respectively. First, we briefly describe the data structure of `484materials-HSPs-symmetry-data.mx`, which is organized as follows:
-
-```mathematica
-{{material formula and BCSID,{{U=i (eV),{{under spin space group: *δν*= -8,high-symmetry-points symmetry data for *U=i eV* and *δν=-8* under spin space group},...},{{under magnetic space group (realistic spin-orbital coupling): *δν*= -8,high-symmetry-points symmetry data for *U=i eV* and *δν=-8* under magnetic space group (realistic spin-orbital coupling)},...}},...}},...}
-```
-We use the altermagnetic material 0.402_Sr<sub>4</sub>Fe<sub>4</sub>O<sub>11</sub> as an example to demonstrate how to use the modules **ColliSSGCalTopoElectron** and **MSGCalTopoElectron**, together with the provided high-symmetry-points symmetry data.
-
-```mathematica
-data = Import["dir3\\484materials-HSPs-symmetry-data.mx"];
-(* dir3 is the directory containing 484materials-HSPs-symmetry-data.mx *)
-ColliSSGCalTopoElectron[data[[83, 2, 1, 2, 9, 2]]]
-MSGCalTopoElectron[data[[83, 2, 1, 3, 9, 2]]]
-```
-
-`ColliSSGCalTopoElectron[data[[83, 2, 1, 2, 9, 2]]]` reproduces the result of `GetTopfilling["65.1.2.5.L", 0, 0, 0]`, while `MSGCalTopoElectron[data[[83, 2, 1, 3, 9, 2]]]` reproduces the result of `GetTopfilling["65.1.2.5.L", 4, 0, 0]`.
 
 
 
